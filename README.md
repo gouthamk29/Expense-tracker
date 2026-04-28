@@ -1,4 +1,4 @@
-# 📱 Expense Tracker / Auth App (React Native + Expo)
+# 📱 Expense Tracker  (React Native + Expo)
 
 A simple mobile application built with **React Native (Expo)** that includes authentication using JWT, API integration, and AsyncStorage for token persistence.
 
