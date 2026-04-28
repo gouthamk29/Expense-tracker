@@ -1,24 +1,50 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Stack, useRouter, useSegments } from "expo-router";
+import { useEffect, useState } from "react";
+import { ActivityIndicator, View } from "react-native";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  const router = useRouter();
+  const segments = useSegments();
 
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+  const [loading, setLoading] = useState(true);
+  const [token, setToken] = useState<string | null>(null);
+
+  const loadToken = async () => {
+    const t = await AsyncStorage.getItem("token");
+    setToken(t);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    loadToken();
+  }, []);
+
+  useEffect(() => {
+    loadToken();
+  }, [segments]);
+
+  useEffect(() => {
+    if (loading) return;
+
+    const inAuth = segments[0] === "(auth)";
+
+    if (!token && !inAuth) {
+      router.replace("/(auth)/login");
+    }
+
+    if (token && inAuth) {
+      router.replace("/(app)/dashboard");
+    }
+  }, [token, segments, loading]);
+
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center" }}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
+  return <Stack screenOptions={{ headerShown: false }} />;
 }
