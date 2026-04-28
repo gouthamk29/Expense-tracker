@@ -49,7 +49,7 @@ API_URL=[backend api url]
 npm start
 ```
 
-🔑 Authentication Flow
+## 🔑 Authentication Flow
 User enters email & password
 Backend validates credentials
 JWT token is returned
@@ -57,7 +57,7 @@ Token stored in AsyncStorage
 Token decoded using jwt-decode
 User redirected to /dashboard
 
-📦 Dependencies
+## 📦 Dependencies
 expo-router
 axios
 @react-native-async-storage/async-storage
@@ -65,13 +65,15 @@ jwt-decode
 react-native
 expo
 
-🖥️ Backend Requirement
+## 🖥️ Backend Requirement
 Ensure backend is running 
 CORS must be enabled for mobile access.
 
+## Backend Node application
+https://github.com/gouthamk29/backend-expense-tracker
 
-👨‍💻 Author
+## 👨‍💻 Author
 Goutham
 
-📄 License
+## 📄 License
 This project is open-source and free to use.
