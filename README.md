@@ -1,50 +1,77 @@
-# Welcome to your Expo app 👋
+# 📱 Expense Tracker / Auth App (React Native + Expo)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple mobile application built with **React Native (Expo)** that includes authentication using JWT, API integration, and AsyncStorage for token persistence.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Features
 
-   ```bash
-   npm install
-   ```
+- 🔐 User Login & Registration
+- 🧠 JWT Authentication
+- 💾 Persistent login using AsyncStorage
+- 🌐 API integration using Axios
+- 📱 React Native (Expo Router navigation)
+- ⚡ Loading states & error handling
+- 🔁 Auto navigation after login
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🛠️ Tech Stack
 
-In the output, you'll find options to open the app in a
+- React Native (Expo)
+- Expo Router
+- Axios
+- AsyncStorage
+- JWT Decode
+- Node.js Backend (Express)
+- MongoDB (assumed backend)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## ⚙️ Installation
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+### 1. Clone the repo
 ```bash
-npm run reset-project
+git clone https://github.com/gouthamk29/Expense-tracker.git
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Install dependencies
+```bash
+npm install
+```
 
-## Learn more
+3.Environment Setup
 
-To learn more about developing your project with Expo, look at the following resources:
+Create an .env fileneeded:
+```
+API_URL=[backend api url] 
+```
+4. Start the app
+```bash
+npm start
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+🔑 Authentication Flow
+User enters email & password
+Backend validates credentials
+JWT token is returned
+Token stored in AsyncStorage
+Token decoded using jwt-decode
+User redirected to /dashboard
 
-## Join the community
+📦 Dependencies
+expo-router
+axios
+@react-native-async-storage/async-storage
+jwt-decode
+react-native
+expo
 
-Join our community of developers creating universal apps.
+🖥️ Backend Requirement
+Ensure backend is running 
+CORS must be enabled for mobile access.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+👨‍💻 Author
+Goutham
+
+📄 License
+This project is open-source and free to use.
